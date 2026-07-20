@@ -5,14 +5,14 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
   { label: "About", href: "/about" },
-  { label: "Create a post", href: "/add-project" },
+  { label: "Create a post", href: "/generate" },
 ];
 
 const socials = [
-  { label: "X", icon: FaXTwitter },
-  { label: "Instagram", icon: FaInstagram },
-  { label: "LinkedIn", icon: FaLinkedinIn },
-  { label: "Facebook", icon: FaFacebookF },
+  { label: "X", icon: FaXTwitter, href: "https://x.com" },
+  { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com" },
+  { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com" },
 ];
 
 export default function Footer() {
@@ -28,8 +28,8 @@ export default function Footer() {
             AI-assisted social content that helps your brand show up with clarity, consistency, and confidence.
           </p>
           <div className="mt-7 flex gap-3">
-            {socials.map(({ label, icon: Icon }) => (
-              <a key={label} href="#" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition hover:-translate-y-1 hover:border-[#7184ff]/50 hover:bg-[#7184ff]/15 hover:text-white">
+            {socials.map(({ label, icon: Icon, href }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition hover:-translate-y-1 hover:border-[#7184ff]/50 hover:bg-[#7184ff]/15 hover:text-white">
                 <Icon />
               </a>
             ))}
@@ -49,7 +49,7 @@ export default function Footer() {
       </div>
       <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-white/[0.08] py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} PostPilot AI. Made for better social content.</p>
-        <div className="flex gap-5"><a href="#" className="hover:text-slate-300">Privacy</a><a href="#" className="hover:text-slate-300">Terms</a></div>
+        <div className="flex gap-5"><a href="https://www.privacypolicies.com/live/" target="_blank" rel="noreferrer" className="hover:text-slate-300">Privacy</a><a href="https://www.termsfeed.com/live/" target="_blank" rel="noreferrer" className="hover:text-slate-300">Terms</a></div>
       </div>
     </footer>
   );

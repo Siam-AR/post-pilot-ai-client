@@ -10,6 +10,7 @@ export default function MyPostsPage() {
   const { isAuthenticated, loading } = useAuth();
   const { showToast } = useToast();
   const [posts, setPosts] = useState<SavedPost[] | null>(null);
+  const [platform, setPlatform] = useState("All"); const [tone, setTone] = useState("All"); const [sort, setSort] = useState("newest"); const [page, setPage] = useState(1); const perPage = 8;
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -40,6 +41,8 @@ export default function MyPostsPage() {
   }, [isAuthenticated, showToast]);
 
   const isPostsLoading = isAuthenticated && posts === null;
+  const filteredPosts = (posts ?? []).filter((post) => (platform === "All" || post.platform === platform) && (tone === "All" || post.tone === tone)).sort((a, b) => sort === "newest" ? +new Date(b.createdAt) - +new Date(a.createdAt) : +new Date(a.createdAt) - +new Date(b.createdAt));
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / perPage)); const visiblePosts = filteredPosts.slice((page - 1) * perPage, page * perPage);
 
   if (loading) {
     return (
@@ -91,6 +94,8 @@ export default function MyPostsPage() {
           </Link>
         </div>
 
+        <div className="mt-6 flex flex-wrap gap-3"><select value={platform} onChange={(e) => { setPlatform(e.target.value); setPage(1); }} className="rounded-xl bg-[#0b1423] p-3"><option>All</option>{[...new Set((posts ?? []).map((post) => post.platform))].map((value) => <option key={value}>{value}</option>)}</select><select value={tone} onChange={(e) => { setTone(e.target.value); setPage(1); }} className="rounded-xl bg-[#0b1423] p-3"><option>All</option>{[...new Set((posts ?? []).map((post) => post.tone))].map((value) => <option key={value}>{value}</option>)}</select><select value={sort} onChange={(e) => setSort(e.target.value)} className="rounded-xl bg-[#0b1423] p-3"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div>
+
         {isPostsLoading ? (
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[0, 1, 2].map((item) => (
@@ -109,7 +114,7 @@ export default function MyPostsPage() {
           </div>
         ) : (
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {(posts ?? []).map((post) => (
+            {visiblePosts.map((post) => (
               <article key={post._id} className="rounded-3xl border border-white/10 bg-white/[.03] p-6 transition-transform hover:-translate-y-1">
                 <div className="flex flex-wrap gap-2 text-sm">
                   <span className="rounded-full bg-[#5067f5]/20 px-3 py-1 text-[#b5bdff]">{post.platform}</span>

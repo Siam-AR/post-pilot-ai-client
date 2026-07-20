@@ -88,7 +88,7 @@ export const authAPI = {
 export type GeneratePostInput = { topic: string; platform: "LinkedIn" | "Facebook" | "Instagram" | "X (Twitter)"; tone: "Professional" | "Casual" | "Friendly" | "Persuasive" | "Funny"; length: "Short" | "Medium" | "Long" };
 export const aiAPI = { generate: (data: GeneratePostInput) => apiCall<{ content: string }>("/api/ai/generate", { method: "POST", body: JSON.stringify(data) }) };
 
-export interface SavedPost { _id: string; userId: string; title: string; shortDescription: string; generatedContent: string; platform: string; tone: string; length: string; createdAt: string; }
+export interface SavedPost { _id: string; userId: string; title: string; shortDescription: string; generatedContent: string; platform: string; tone: string; length: string; imageUrl?: string; createdAt: string; }
 export const postsAPI = {
   create: (data: Omit<SavedPost, "_id" | "userId" | "createdAt">) => apiCall<SavedPost>("/api/posts", { method: "POST", body: JSON.stringify(data) }),
   getMine: () => apiCall<SavedPost[]>("/api/posts/my"),
