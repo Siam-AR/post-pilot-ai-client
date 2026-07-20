@@ -81,12 +81,12 @@ const Navbar: React.FC = () => {
           {isAuthenticated && (
             <>
               <li>
-                <Link href="/add-project" className={navLinkClass(isActive("/add-project"))}>
+                <Link href="/generate" className={navLinkClass(isActive("/generate"))}>
                   Generate
                 </Link>
               </li>
               <li>
-                <Link href="/my-projects" className={navLinkClass(isActive("/my-projects"))}>
+                <Link href="/my-post" className={navLinkClass(isActive("/my-post"))}>
                   My Post
                 </Link>
               </li>
