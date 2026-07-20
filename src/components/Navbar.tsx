@@ -86,8 +86,8 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/my-post" className={navLinkClass(isActive("/my-post"))}>
-                  My Post
+                <Link href="/my-posts" className={navLinkClass(isActive("/my-posts"))}>
+                  My Posts
                 </Link>
               </li>
             </>
@@ -211,13 +211,13 @@ const Navbar: React.FC = () => {
               {isAuthenticated && (
                 <>
                   <li>
-                    <Link href="/add-project" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/generate" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
                       Generate
                     </Link>
                   </li>
                   <li>
-                    <Link href="/my-projects" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                      My Post
+                    <Link href="/my-posts" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
+                      My Posts
                     </Link>
                   </li>
                 </>
@@ -227,11 +227,11 @@ const Navbar: React.FC = () => {
             <div className="mt-4 border-t border-white/10 pt-4">
               {isAuthenticated ? (
                 <div className="flex flex-col gap-2">
-                  <Link href="/add-project" className="rounded-xl bg-white/10 px-3 py-3 text-center text-sm font-semibold text-white" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/generate" className="rounded-xl bg-white/10 px-3 py-3 text-center text-sm font-semibold text-white" onClick={() => setMobileMenuOpen(false)}>
                     Generate
                   </Link>
-                  <Link href="/my-projects" className="rounded-xl bg-white/10 px-3 py-3 text-center text-sm font-semibold text-white" onClick={() => setMobileMenuOpen(false)}>
-                    My Post
+                  <Link href="/my-posts" className="rounded-xl bg-white/10 px-3 py-3 text-center text-sm font-semibold text-white" onClick={() => setMobileMenuOpen(false)}>
+                    My Posts
                   </Link>
                 </div>
               ) : (
