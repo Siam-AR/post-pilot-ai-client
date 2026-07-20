@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
 @keyframes floatSocial {
   0%,
   100% {

@@ -16,3 +16,32 @@ export interface AuthResponse {
   user?: User;
   success?: boolean;
 }
+
+export interface ApiErrorResponse {
+  message?: string;
+  error?: string;
+  success?: boolean;
+}
+
+export interface Comment {
+  _id: string;
+  content: string;
+  ideaId: string;
+  userId?: string;
+  user?: User;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface Idea {
+  _id: string;
+  title: string;
+  description: string;
+  category?: string;
+  tags?: string[];
+  author?: User;
+  authorId?: string;
+  comments?: Comment[];
+  createdAt?: string;
+  updatedAt?: string;
+}
