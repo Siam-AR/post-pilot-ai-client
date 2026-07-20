@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-const THEME_STORAGE_KEY = 'ideaVaultTheme';
+const THEME_STORAGE_KEY = 'postPilotAITheme';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -15,7 +15,9 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const getInitialTheme = (): ThemeMode => {
+const getInitialTheme = (): ThemeMode => 'light';
+
+const getStoredTheme = (): ThemeMode => {
   if (typeof window === 'undefined') return 'light';
 
   const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -30,13 +32,21 @@ const getInitialTheme = (): ThemeMode => {
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setThemeState] = useState<ThemeMode>(getInitialTheme);
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    setThemeState(getStoredTheme());
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+
     const root = document.documentElement;
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [theme]);
+  }, [theme, hydrated]);
 
   const toggleTheme = () => {
     setThemeState((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
