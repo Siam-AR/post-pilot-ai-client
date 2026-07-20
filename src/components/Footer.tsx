@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Explore", href: "/explore" },
+  { label: "Features", href: "/features" },
   { label: "About", href: "/about" },
   { label: "Create a post", href: "/add-project" },
 ];
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <h2 className="text-sm font-bold uppercase tracking-[0.16em] text-slate-500">Explore</h2>
+          <h2 className="text-sm font-bold uppercase tracking-[0.16em] text-slate-500">Navigate</h2>
           <ul className="mt-5 space-y-3 font-serif text-lg text-slate-300">
             {navLinks.map(({ label, href }) => <li key={href}><Link href={href} className="transition hover:text-white">{label}</Link></li>)}
           </ul>

@@ -8,7 +8,7 @@ const BASE_TITLE = "Post Pilot AI";
 
 const ROUTE_TITLES: Record<string, string> = {
   "/": "Home",
-  "/explore": "Explore",
+  "/features": "Features",
   "/about": "About",
   "/contact": "Contact",
   "/add-post": "Add Post",

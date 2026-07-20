@@ -69,8 +69,8 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link href="/explore" className={navLinkClass(isActive("/explore"))}>
-              Explore
+            <Link href="/features" className={navLinkClass(isActive("/features"))}>
+              Features
             </Link>
           </li>
           <li>
@@ -199,8 +199,8 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/explore" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                  Explore
+                <Link href="/features" className="flex rounded-xl px-3 py-3 text-blue-100 hover:bg-white/10 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
+                  Features
                 </Link>
               </li>
               <li>
